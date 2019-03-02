@@ -9,13 +9,29 @@
         "alias": "google_calendar"
       }],
       "operations": [{
-        "id": "hello_world",
-        "description": "Returns \"Hello, world\" in different languages",
+        "id": "OnVacationToday",
         "function": {
-          "js": "hello_world.js"
-        },
-        "access": {
-          "requireUser": true
+          "js": "OnVacationToday.js"
+        }
+      }, {
+        "id": "slack_set_vacation",
+        "tql": {
+          "tql": "SELECT * FROM slack.set_users_profile\n  WHERE $body.profile.status_text = \"On vacation\"\n  AND $body.profile.status_emoji = \":palm_tree:\"\n\n"
+        }
+      }, {
+        "id": "slack_clear_status",
+        "tql": {
+          "tql": "SELECT * FROM slack.set_users_profile\n  WHERE $body.profile.status_text = \"\"\n  AND $body.profile.status_emoji = \"\"\n\n"
+        }
+      }, {
+        "id": "Runner",
+        "function": {
+          "js": "Runner.js"
+        }
+      }, {
+        "id": "ScheduledTask",
+        "function": {
+          "js": "ScheduledTask.js"
         }
       }],
       "dataConnections": [{
