@@ -9,7 +9,7 @@
   }
   
   return {
-    onVacation: onVacation;
+    onVacation: onVacation
   };
 }
 
