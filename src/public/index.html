@@ -33,7 +33,7 @@
   </svg>
   <h1>Slack Vacation Helper</h1>
   <p class="text-secondary">
-    Sets your Slack status to "On vacation" if you have a corresponding Google Calendar event (anything with "PTO", "DTO", or "vacation" in the title).
+    Sets your Slack status to "On vacation" if you have a corresponding Google Calendar event <br/>(anything with "PTO", "DTO", or "vacation" in the title).
   </p>
 </div>
 <div class="container mt-3 mt-md-5">
@@ -63,9 +63,9 @@
         const results = response.result.results;
         var resultText = "";
         if (results.onVacation) {
-          resultText = "We've changed your slack status (and will check for updates to your vacation schedule every day). Enjoy your vacation!";
+          resultText = "We've changed your Slack status (and will check for updates to your vacation schedule every day). Enjoy your vacation!";
         } else {
-          resultText = "Great! We'll check at the beginning of every day if you're on vacation or not, and update our Slack status accordingly.";
+          resultText = "Great! We'll check at the beginning of every day if you're on vacation or not, and update your Slack status accordingly.";
         }
 
         var resultsHtml = "<div>" + resultText + "</div>";
