@@ -46,6 +46,9 @@
             }
           }
         }
+      }, {
+        "ref": "google_calendar.raw",
+        "requireConsumerSignin": true
       }],
       "javascriptAPIVersion": "3",
       "source": "src"
