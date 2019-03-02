@@ -31,9 +31,9 @@
         <circle fill="#1D8A48" cx="42" cy="36" r="6"/>
       </g>
     </svg>
-    <h1>Hello, world!</h1>
+    <h1>Slack Vacation Helper</h1>
     <p class="text-secondary">
-      There's lots of ways to say "Hello, world"!
+      Sets your Slack status to "On vacation" if you have a corresponding Google Calendar event (anything with "PTO", "DTO", or "vacation" in the title).
     </p>
   </div>
   <div class="container mt-3 mt-md-5">
@@ -54,25 +54,22 @@
     $("#failure").hide();
     $("#success").hide();
 
-    transposit.runOperation("hello_world")
+    transposit.runOperation("Runner")
       .then((response) => {
         if (response.status !== "SUCCESS") {
           throw response;
         }
 
         const results = response.result.results;
-
-        if (results.length === 0) {
-          $("#results").text("None");
+        var resultText = "";
+        if (results.onVacation) {
+          resultText = "We've changed your slack status (and will check for updates to your vacation schedule every day). Enjoy your vacation!";
         } else {
-          const resultsHtml = $("<ul>").addClass("list-group");
-          for (const result of results) {
-            resultsHtml.append(
-                $("<li>").addClass("list-group-item").text(result.message)
-            );
-          }
-          $("#results").append(resultsHtml);
+          resultText = "Great! We'll check at the beginning of every day if you're on vacation or not, and update our Slack status accordingly."; 
         }
+      
+        var resultHtml = "<div>" + resultText + "</div>";
+        $("#results").append(resultsHtml);
 
         $("#loading").hide();
         $("#success").show();

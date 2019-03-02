@@ -1,13 +1,15 @@
 (params) => {
   var vacationEvent = api.run("this.OnVacationToday");
+  var onVacation = false;
   if (vacationEvent.length > 0) {
     api.run("this.slack_set_vacation");
+    onVacation = true;
   } else {
    	api.run("this.slack_clear_status"); 
   }
   
   return {
-    mission: "complete"
+    onVacation: onVacation;
   };
 }
 
