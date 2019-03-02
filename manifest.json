@@ -20,7 +20,7 @@
         "overrides": {
           "swagger": {
             "oauthConfig": {
-              "scope": "users.profile:write "
+              "scope": "users.profile:write users.profile:read"
             },
             "executionLimits": {
             }
