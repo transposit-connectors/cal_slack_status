@@ -21,40 +21,40 @@
   </script>
 </head>
 <body class="bg-light">
-  <div class="container mt-3 mt-md-5">
-    <svg class="float-md-right ml-md-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-      <g fill-rule="nonzero" fill="none">
-        <circle fill="#94D8E8" cx="32" cy="32" r="32"/>
-        <path d="M32 54V30" stroke="#89695E" stroke-width="4"/>
-        <circle fill="#26B25E" cx="32" cy="24" r="12"/>
-        <path d="M32 46l9-9" stroke="#89695E" stroke-width="4"/>
-        <circle fill="#1D8A48" cx="42" cy="36" r="6"/>
-      </g>
-    </svg>
-    <h1>Slack Vacation Helper</h1>
-    <p class="text-secondary">
-      Sets your Slack status to "On vacation" if you have a corresponding Google Calendar event (anything with "PTO", "DTO", or "vacation" in the title).
-    </p>
+<div class="container mt-3 mt-md-5">
+  <svg class="float-md-right ml-md-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+    <g fill-rule="nonzero" fill="none">
+      <circle fill="#94D8E8" cx="32" cy="32" r="32"/>
+      <path d="M32 54V30" stroke="#89695E" stroke-width="4"/>
+      <circle fill="#26B25E" cx="32" cy="24" r="12"/>
+      <path d="M32 46l9-9" stroke="#89695E" stroke-width="4"/>
+      <circle fill="#1D8A48" cx="42" cy="36" r="6"/>
+    </g>
+  </svg>
+  <h1>Slack Vacation Helper</h1>
+  <p class="text-secondary">
+    Sets your Slack status to "On vacation" if you have a corresponding Google Calendar event (anything with "PTO", "DTO", or "vacation" in the title).
+  </p>
+</div>
+<div class="container mt-3 mt-md-5">
+  <div id="loading" class="alert alert-warning" role="alert">
+    Loading...
   </div>
-  <div class="container mt-3 mt-md-5">
-    <div id="loading" class="alert alert-warning" role="alert">
-      Loading...
-    </div>
-    <div id="failure" class="alert alert-warning" role="alert">
-      Operation failed. See JavaScript console.
-    </div>
-    <div id="success" class="card">
-      <h5 class="card-header">Results</h5>
-      <div id="results" class="card-body">
-        <!-- Results written here -->
-      </div>
+  <div id="failure" class="alert alert-warning" role="alert">
+    Operation failed. See JavaScript console.
+  </div>
+  <div id="success" class="card">
+    <h5 class="card-header">Results</h5>
+    <div id="results" class="card-body">
+      <!-- Results written here -->
     </div>
   </div>
-  <script>
-    $("#failure").hide();
-    $("#success").hide();
+</div>
+<script>
+  $("#failure").hide();
+  $("#success").hide();
 
-    transposit.runOperation("Runner")
+  transposit.runOperation("Runner")
       .then((response) => {
         if (response.status !== "SUCCESS") {
           throw response;
@@ -65,10 +65,10 @@
         if (results.onVacation) {
           resultText = "We've changed your slack status (and will check for updates to your vacation schedule every day). Enjoy your vacation!";
         } else {
-          resultText = "Great! We'll check at the beginning of every day if you're on vacation or not, and update our Slack status accordingly."; 
+          resultText = "Great! We'll check at the beginning of every day if you're on vacation or not, and update our Slack status accordingly.";
         }
-      
-        var resultHtml = "<div>" + resultText + "</div>";
+
+        var resultsHtml = "<div>" + resultText + "</div>";
         $("#results").append(resultsHtml);
 
         $("#loading").hide();
@@ -84,6 +84,6 @@
         $("#loading").hide();
         $("#failure").show();
       });
-  </script>
+</script>
 </body>
 </html>
