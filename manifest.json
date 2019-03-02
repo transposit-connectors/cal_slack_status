@@ -4,6 +4,9 @@
       "dependencies": [{
         "name": "transposit/slack:v1.*.*",
         "alias": "slack"
+      }, {
+        "name": "transposit/google_calendar:v1.*.*",
+        "alias": "google_calendar"
       }],
       "operations": [{
         "id": "hello_world",
