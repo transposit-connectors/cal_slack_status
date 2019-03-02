@@ -15,6 +15,18 @@
           "requireUser": true
         }
       }],
+      "dataConnections": [{
+        "ref": "slack.raw",
+        "overrides": {
+          "swagger": {
+            "oauthConfig": {
+              "scope": "users.profile:write "
+            },
+            "executionLimits": {
+            }
+          }
+        }
+      }],
       "javascriptAPIVersion": "3",
       "source": "src"
     }
