@@ -27,6 +27,9 @@
         "id": "Runner",
         "function": {
           "js": "Runner.js"
+        },
+        "access": {
+          "requireUser": true
         }
       }, {
         "id": "ScheduledTask",
