@@ -1,6 +1,6 @@
 # Slack Vacation Helper
 
-This app will change your Slack status to "On vacation" if your Google Calendar has a "vacation" event scheduled for today.
+This app will change your Slack status to "On vacation" if your Google Calendar says you are.
 
 To use it, go to the [hosted app](https://cal-slack-status-p7i9u.transposit.io/), sign in, and add authenticate with your Google Calendar and Slack accounts. That's it! (If you want to test that it really works, create a Calendar event with the title "Vacation" for today and refresh the hosted app page.)
 
