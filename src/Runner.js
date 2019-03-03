@@ -1,5 +1,4 @@
 (params) => {
-  api.log("hi");
   var vacationEvent = api.run("this.OnVacationToday");
   var onVacation = false;
   if (vacationEvent.length > 0) {
