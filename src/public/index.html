@@ -60,7 +60,7 @@
           throw response;
         }
 
-        const results = response.result.results;
+        const results = response.result.results[0];
         var resultText = "";
         if (results.onVacation) {
           resultText = "We've changed your Slack status (and will check for updates to your vacation schedule every day). Enjoy your vacation!";
