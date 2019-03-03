@@ -1,12 +1,12 @@
 (params) => {
-  var moment = require('moment-timezone-with-data.js');
-  var today = moment();
-  var tomorrow = moment().add(1, 'days');
+  var moment = require('moment-timezone-with-data.js');  
+  var timezone = api.query("SELECT timeZone from google_calendar.get_calendar WHERE calendarId= 'primary'")[0].timeZone;
+  var today = moment().tz(timezone);
   
   var sqlQuery = "SELECT summary, start FROM google_calendar.get_calendar_events" +
       "  WHERE calendarId='primary'" +
-      "  AND timeMin ='" + today.format() + "'" +
-      "  AND timeMax ='" + tomorrow.format() + "'" +
+      "  AND timeMin ='" + today.startOf("day").format() + "'" +
+      "  AND timeMax ='" + today.endOf("day").format() + "'" +
       "  AND q in ('PTO', 'DTO', 'Vacation')" +
       "  LIMIT 1";
   

@@ -36,6 +36,11 @@
         "function": {
           "js": "ScheduledTask.js"
         }
+      }, {
+        "id": "get_calendar",
+        "tql": {
+          "tql": "SELECT * FROM google_calendar.get_calendar\n  WHERE calendarId='primary'\n"
+        }
       }],
       "dataConnections": [{
         "ref": "slack.raw",
