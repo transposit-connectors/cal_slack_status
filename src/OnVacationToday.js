@@ -8,9 +8,7 @@
       "  AND timeMin ='" + today.format() + "'" +
       "  AND timeMax ='" + tomorrow.format() + "'" +
       "  AND q in ('PTO', 'DTO', 'Vacation')" +
-      "  LIMIT 1"
-  
-  api.log(sqlQuery);
+      "  LIMIT 1";
   
   return api.query(sqlQuery);
 }

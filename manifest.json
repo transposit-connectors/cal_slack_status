@@ -55,6 +55,7 @@
       }],
       "javascriptAPIVersion": "3",
       "source": "src"
-    }
+    },
+    "description": "Automatically change your slack status if you're on vacation"
   }
 }
