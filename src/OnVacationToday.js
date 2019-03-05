@@ -3,14 +3,22 @@
   var timezone = api.query("SELECT timeZone from google_calendar.get_calendar WHERE calendarId= 'primary'")[0].timeZone;
   var today = moment().tz(timezone);
   
-  var sqlQuery = "SELECT summary, start FROM google_calendar.get_calendar_events" +
+  var sqlQuery = "SELECT summary FROM google_calendar.get_calendar_events" +
       "  WHERE calendarId='primary'" +
       "  AND timeMin ='" + today.startOf("day").format() + "'" +
       "  AND timeMax ='" + today.endOf("day").format() + "'" +
-      "  AND q in ('PTO', 'DTO', 'Vacation')" +
-      "  LIMIT 1";
+      "  LIMIT 20";
   
-  return api.query(sqlQuery);
+  var calendarEntries = api.query(sqlQuery);
+  
+  var vacationEvent = {};
+  calendarEntries.forEach((entry) => {
+    var name = entry.summary.toLowerCase();
+    if (name.includes("pto") || name.includes("dto") || name.includes("vacation")) { 
+      vacationEvent = entry;  
+    }
+  });
+   return vacationEvent;
 }
 
 /*
