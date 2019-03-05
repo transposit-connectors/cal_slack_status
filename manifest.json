@@ -10,21 +10,25 @@
       }],
       "operations": [{
         "id": "OnVacationToday",
+        "description": "Checks the user's Google Calendar to see if they have a \"vacation\" event scheduled for anytime in the current day. Timezone-specific to the user's calendar.",
         "function": {
           "js": "OnVacationToday.js"
         }
       }, {
         "id": "slack_set_vacation",
+        "description": "Edits the user's Slack status",
         "tql": {
           "tql": "SELECT * FROM slack.set_users_profile\n  WHERE $body.profile.status_text = \"On vacation\"\n  AND $body.profile.status_emoji = \":palm_tree:\"\n\n"
         }
       }, {
         "id": "slack_clear_status",
+        "description": "Clears the user's slack status",
         "tql": {
           "tql": "SELECT * FROM slack.set_users_profile\n  WHERE $body.profile.status_text = \"\"\n  AND $body.profile.status_emoji = \"\"\n\n"
         }
       }, {
         "id": "Runner",
+        "description": "Set or clear the user's Slack status given their vacation status.",
         "function": {
           "js": "Runner.js"
         },
@@ -33,13 +37,9 @@
         }
       }, {
         "id": "ScheduledTask",
+        "description": "This operation is called by a scheduled task. It's the entry point into the application's code. It does a runForallUsers to check and update Slack statuses for all registered users.",
         "function": {
           "js": "ScheduledTask.js"
-        }
-      }, {
-        "id": "get_calendar",
-        "tql": {
-          "tql": "SELECT * FROM google_calendar.get_calendar\n  WHERE calendarId='primary'\n"
         }
       }],
       "dataConnections": [{
