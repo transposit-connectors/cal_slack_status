@@ -1,7 +1,7 @@
 (params) => {
-  var vacationEvent = api.run("this.OnVacationToday")[0];
+  var vacationEvent = api.run("this.OnVacationToday");
   var onVacation = false;
-  if (vacationEvent.summary) {
+  if (vacationEvent.length > 0) {
     api.run("this.slack_set_vacation");
     onVacation = true;
   } else {

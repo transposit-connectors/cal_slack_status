@@ -7,18 +7,10 @@
       "  WHERE calendarId='primary'" +
       "  AND timeMin ='" + today.startOf("day").format() + "'" +
       "  AND timeMax ='" + today.endOf("day").format() + "'" +
+      "  AND q IN ('PTO', 'DTO', 'Vacation')" +
       "  LIMIT 20";
   
-  var calendarEntries = api.query(sqlQuery);
-  
-  var vacationEvent = {};
-  calendarEntries.forEach((entry) => {
-    var name = entry.summary.toLowerCase();
-    if (name.includes("pto") || name.includes("dto") || name.includes("vacation")) { 
-      vacationEvent = entry;  
-    }
-  });
-   return vacationEvent;
+  return api.query(sqlQuery);
 }
 
 /*
