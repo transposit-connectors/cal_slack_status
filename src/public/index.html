@@ -76,7 +76,7 @@
       })
       .catch((response) => {
         if (response.requestId) {
-          console.log(`Experienced an error running an operation! View the debug logs here: ${host}/t/${maintainer}/${applicationName}/monitor/${response.requestId}`);
+          console.log(`Experienced an error running an operation! Make sure you're propertly authenticated (Settings)`);
         } else {
           console.log(`The operation did not run at all. Try again, or check the deployment configurations if the problem persists: ${host}/t/${maintainer}/${applicationName}/deploy`);
         }
