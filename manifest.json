@@ -61,6 +61,7 @@
       "javascriptAPIVersion": "3",
       "source": "src"
     },
-    "description": "Automatically change your slack status if you're on vacation"
+    "description": "Automatically set your Slack status while your Google Calendar says you're away on vacation.",
+    "displayName": "Slack Vacation Helper"
   }
 }
